@@ -37,11 +37,12 @@ This project allows you to control your computer's mouse using hand gestures, pr
 
 Create a file named requirements.txt in the root of your project directory and add the following lines:
 
-opencv-python  
-mediapipe  
-pyautogui  
-pynput  
-numpy
+opencv-python==4.8.1.78
+mediapipe==0.10.8
+pyautogui==0.9.54
+pynput
+numpy==1.26.4
+
 
 ## **Usage**
 
@@ -72,9 +73,3 @@ Here’s a breakdown of the key functions that make the gesture recognition poss
 * **get\_distance(landmark\_list)**: This function calculates the straight-line distance between two landmark points. The result is then interpolated from the camera's normalized coordinate system to a larger scale (\[0, 1000\]) to make it easier to work with when setting gesture thresholds.  
 * **is\_left\_click(landmarks\_list, thumb\_index\_dist)**: This function defines the conditions for a left click. It returns True only if the angle of the middle finger is small (i.e., it's bent), the ring finger is relatively straight, and the distance between the thumb and index finger is large (to avoid clicking while moving the cursor). Similar logic applies to is\_right\_click and is\_double\_click.  
 * **detect\_gestures(...)**: This is the main control function. In each frame, it checks for the defined gestures in a specific order of priority. It first checks for mouse movement, then for the various clicks, and finally for the screenshot gesture. This prevents multiple actions from being triggered simultaneously.
-
-## **Future Scope**
-
-* **Drag and Drop:** Implement a gesture for holding down the mouse button to allow for dragging and dropping.  
-* **Scrolling:** Add gestures for vertical and horizontal scrolling.  
-* **Customizable Gestures:** Allow users to define their own gestures for different actions.
